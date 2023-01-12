@@ -69,7 +69,7 @@ std::vector<TrackT> *fetchTracks(const char *filename, const char *treename, con
 }
 
 // add vertices/collisions
-void impactParameterResolution()
+void impactParameter()
 {
 	// open the file for vertices
 	TFile f("o2_primary_vertex.root", "OPEN");
@@ -121,8 +121,8 @@ void impactParameterResolution()
 				// now go over tracks via the indices
 				auto &v = vertices->at(index);
 				auto &trackref = v2trackref->at(index);
-				int start = trackref.getFirstEntryOfSource(0);
-				int ntracks = trackref.getEntriesOfSource(0);
+				int start = trackref.getFirstEntry();
+				int ntracks = trackref.getEntries();
 				for (int ti = 0; ti < ntracks; ++ti)
 				{
 					auto trackindex = (*vertexTrackIDs)[start + ti];
